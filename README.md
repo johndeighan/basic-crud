@@ -64,3 +64,18 @@ Furthermore, we will be utilizing these technologies:
 	including a library named falcor-local-datasource
 	to enable keeping the data local for this project.
 
+This README file will consist of a series of sections, each
+describing a logical step in the development process. We
+hope that this file can then function as a tutorial for
+developing similar CRUD interfaces.
+
+Setup
+-----
+
+If you plan to use this project for development, you will need
+to be sure that the following are installed:
+
+1. Git (<https://git-scm.com/>)
+2. Node.js (<https://nodejs.org/>)
+3. Typescript: `npm install -g typescript`
+4. Angular CLI: `npm install -g @angular/cli`
