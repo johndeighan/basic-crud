@@ -23,8 +23,8 @@ One of the major goals of this project is to have all
 data (i.e. the set of users) be stored in a local
 JavaScript object, develop the entire interface,
 then at a later time move the data to remote storage
-such as a SQL database or NoSQL database WITHOUT THE
-NEED TO MODIFY THE FILES IMPLEMENTING THE INTERFACE.
+such as a SQL database or NoSQL database **without the
+need to modify the files implementing the interface**.
 
 In this project, the interface is implemented in Angular
 (i.e. version 2+), so that includes the Angular component
@@ -54,10 +54,10 @@ the second 10 users, etc.
 Furthermore, we will be utilizing these technologies:
 
 1. Material Design for styling, specifically Material Design
-	Lite <https://getmdl.io/>. At first, we will simply
+	Lite (<https://getmdl.io/>). At first, we will simply
 	import the library and add attributes to the standard
-	HTML form elements. Later, we will implement light weight
-	components to avoid having to know the attribute names
+	HTML elements. Later, we will implement light weight
+	components to avoid having to remember the attribute names
 	and to promote uniformity in the interface.
 
 2. Falcor will be used to implement the data source,
