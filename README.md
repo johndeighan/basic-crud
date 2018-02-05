@@ -93,4 +93,49 @@ to execute these commands to install needed packages locally in
 the project:
 
 - `npm install falcor --save`
+- `npm install @types/falcor --save`
 - `npm install falcor-local-datasource --save`
+
+I, personally, dislike Angular's indentation scheme and much prefer
+using TAB characters for indentation. So, I "fix up" the following
+files:
+
+	src/index.html
+	src/main.ts
+	src/test.ts
+	src/app/app.module.ts
+	src/app/app.component.ts
+	src/app/app.component.html
+	src/app/app.component.spec.ts
+
+You should get in the habit of firing up the web site and testing it
+in a browser often, e.g. after modifying the above files. The sooner
+you detect a problem, the more likely you'll be able to quickly find
+and fix it.
+
+Angular CLI makes it easy for you to create new objects, including
+services, classes, components, etc. However, files will be created
+using Angular's formatting style, and if you don't like that, you
+will have to modify the template files used to create those source
+files. Here are some files that I prefer to edit before using Angular
+CLI to create new objects:
+
+	node_modules/@schematics/angular/service/files/__path__/__name@dasherize__.service.ts
+	node_modules/@schematics/angular/service/files/__path__/__name@dasherize__.service.spec.ts
+
+The location of these files might change - Google has no approved
+procedure for editing these templates yet. But as of Angular CLI
+1.6.7, this is where the templates are located (you can find your
+version of Angular CLI via the command `ng -v`). You can find similar
+templates for other Angular CLI objects by replacing 'service' in the
+paths above with, e.g. 'component'.
+
+Adding a service implementing a falcor Model
+============================================
+
+To create a new service, which we will use to supply data to the
+views, i.e. Angular components, execute the command (from inside your
+project's folder):
+
+	ng generate service falcor-model
+
