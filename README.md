@@ -95,6 +95,7 @@ the project:
 - `npm install falcor --save`
 - `npm install @types/falcor --save`
 - `npm install falcor-local-datasource --save`
+- `npm install material-design-lite --save`
 
 I, personally, dislike Angular's indentation scheme and much prefer
 using TAB characters for indentation. So, I "fix up" the following
@@ -130,6 +131,27 @@ version of Angular CLI via the command `ng -v`). You can find similar
 templates for other Angular CLI objects by replacing 'service' in the
 paths above with, e.g. 'component'.
 
+Displaying a list of users
+==========================
+
+Before we even implement the data model, we'll display a hard coded list
+of users, which will illustrate the use of Material Design Lite and
+show what the interface will look like. But first, let's modify the
+src/app/app.component.html file and test the web server. Change that file
+to have these contents:
+
+	<div style="text-align:center">
+		<h1>
+			Welcome to Basic CRUD!
+		</h1>
+	</div>
+
+After saving that file, if you execute the command `ng serve` and
+point your web browser to `http://localhost:4200` you should see the
+following:
+
+![basic CRUD](BasicCrud.png)
+
 Adding a service implementing a falcor Model
 ============================================
 
@@ -138,4 +160,9 @@ views, i.e. Angular components, execute the command (from inside your
 project's folder):
 
 	ng generate service falcor-model
+
+You should find that the following 2 files were created:
+
+	src/app/falcor-model.service.spec.ts
+	src/app/falcor-model.service.ts
 
