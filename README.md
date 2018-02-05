@@ -79,3 +79,18 @@ to be sure that the following are installed:
 2. Node.js (<https://nodejs.org/>)
 3. Typescript: `npm install -g typescript`
 4. Angular CLI: `npm install -g @angular/cli`
+
+> NOTE: To initially create this project, I used the command
+>       `ng new basic-crud`. When I tried to fire up the web site
+>       using `ng serve`, I got the message "Error: Cannot find module
+>       '@angular-devkit/core'". However, after installing that
+>       package with `npm install @angular-devkit/core --save`
+>       I was able to fire up the web site.
+
+You may simply clone this project and proceed from there, but if
+you decide to create this project from scratch, you should be sure
+to execute these commands to install needed packages locally in
+the project:
+
+- `npm install falcor --save`
+- `npm install falcor-local-datasource --save`
