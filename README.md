@@ -60,7 +60,13 @@ Furthermore, we will be utilizing these technologies:
 	components to avoid having to remember the attribute names
 	and to promote uniformity in the interface.
 
-2. Falcor will be used to implement the data source,
+2. The interface should be useable not only on computer
+	screens, but also on a tablet or smart phone. Here
+	Material Design Lite will also provide this functionality.
+	During development, you should test the interface
+	on all 3 types of devices.
+
+3. Falcor will be used to implement the data source,
 	including a library named falcor-local-datasource
 	to enable keeping the data local for this project.
 
@@ -95,7 +101,6 @@ the project:
 - `npm install falcor --save`
 - `npm install @types/falcor --save`
 - `npm install falcor-local-datasource --save`
-- `npm install material-design-lite --save`
 
 I, personally, dislike Angular's indentation scheme and much prefer
 using TAB characters for indentation. So, I "fix up" the following
@@ -131,14 +136,13 @@ version of Angular CLI via the command `ng -v`). You can find similar
 templates for other Angular CLI objects by replacing 'service' in the
 paths above with, e.g. 'component'.
 
-Displaying a list of users
-==========================
+A quick test of your setup
+--------------------------
 
-Before we even implement the data model, we'll display a hard coded list
-of users, which will illustrate the use of Material Design Lite and
-show what the interface will look like. But first, let's modify the
-src/app/app.component.html file and test the web server. Change that file
-to have these contents:
+At this point you should be able to fire up the server and view the
+web site. Before you do, however, make one additional change. Modify
+the `src/app/app.component.html` file and test the web server. Change
+that file to have these contents:
 
 	<div style="text-align:center">
 		<h1>
@@ -151,6 +155,48 @@ point your web browser to `http://localhost:4200` you should see the
 following:
 
 ![basic CRUD](BasicCrud.png)
+
+Using Material Design Lite
+--------------------------
+
+In order to utilize the Material Design Lite (MDL) components, you will
+need to link to the MDL CSS and JavaScript files. Since we're developing
+a Single Page Application, we can do that in one place - the file
+`src/index.html`. Add this code at the end of the `<head>` section of that file:
+
+	<link rel="stylesheet"
+	      href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+	<link rel="stylesheet"
+	      href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+Next, add the following at the end of the `<body>` section of that file:
+
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js">
+	</script>
+
+> NOTE: The code above references a specific version of MDL and a specific
+>       color scheme. You can instead reference a different version, e.g.
+>       a more recent version and also a different color scheme.
+
+> NOTE: It is possible to install material-design-lite directly into your
+>       project using `npm install material-design-lite --save` but I could
+>       not figure out how to correctly link to those CSS and JavaScript files
+>       so I decided to use Google's CDN as they recommend.
+
+After you make the above changes, your web site should look almost the same,
+except that the font used will now be a sans-serif font:
+
+![basic CRUD](BasicCrud2.png)
+
+Displaying a list of users
+==========================
+
+Before we even implement the data model, we'll display a hard coded list
+of users, which will illustrate the use of Material Design Lite and
+show what the interface will look like. But first, let's Next, we'll modify src/app/app.component.html to include a hard coded
+table to show the use of Material Design Lite:
+
+
 
 Adding a service implementing a falcor Model
 ============================================
