@@ -159,18 +159,22 @@ In order to utilize the Material Design components, you will
 need to make the following changes to some of the source files:
 
 1. In src/app/app.module.ts:
+
 	- add `import {BrowserAnimationsModule} from '@angular/platform-browser/animations';`
 	- add `import {MatButtonModule, MatTableModule} from '@angular/material';`
 	- add BrowserAnimationsModule, MatButtonModule and MatTableModule to the list of imports
 	- if you want to use any other 'Mat' modules, import them as above
 
 2. In src/styles.css:
+
 	- add `@import "~@angular/material/prebuilt-themes/indigo-pink.css";`
 
 3. In src/main.ts:
+
 	- add `import 'hammerjs';`
 
 4. In src/index.html:
+
 	- add `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 After you make the above changes, your web site should look almost the same,
@@ -183,8 +187,17 @@ Displaying a list of users
 
 Before we even implement the data model, we'll display a hard coded list
 of users, which will illustrate the use of Material Design Lite and
-show what the interface will look like. To do that we will use the MDL
-data-table component. Modify the `src/app/app.component.html` file to:
+show what the interface will look like. To do that we will use the Material Design
+mat-table component. Modify the following files as shown:
+
+`src/app/app.component.css`
+
+	.limit-width {
+		max-width: 640px;
+		margin-left: auto;
+		margin-right: auto;
+		}
+
 
 
 
