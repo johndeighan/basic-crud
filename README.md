@@ -27,11 +27,12 @@ such as a SQL database or NoSQL database **without the
 need to modify the files implementing the interface**.
 
 In this project, the interface is implemented in Angular
-(i.e. version 2+), so that includes the Angular component
+(i.e. version 2+), so files that should **not** need to be
+modified include the Angular component
 TypeScript files and any referenced HTML and CSS files.
-The data will be stored in an Angular service, so the
+The data will be fetched from an Angular service, so the
 only changes required to fetch the data from a remote
-server should be to the file implementing the service.
+server should be to the file implementing this service.
 
 Via the interface, you should be able to:
 
@@ -53,12 +54,7 @@ the second 10 users, etc.
 
 Furthermore, we will be utilizing these technologies:
 
-1. Material Design for styling, specifically Material Design
-	Lite (<https://getmdl.io/>). At first, we will simply
-	import the library and add attributes to the standard
-	HTML elements. Later, we will implement light weight
-	components to avoid having to remember the attribute names
-	and to promote uniformity in the interface.
+1. Material Design for styling.
 
 2. The interface should be useable not only on computer
 	screens, but also on a tablet or smart phone. Here
@@ -94,13 +90,13 @@ to be sure that the following are installed:
 >       I was able to fire up the web site.
 
 You may simply clone this project and proceed from there, but if
-you decide to create this project from scratch, you should be sure
-to execute these commands to install needed packages locally in
+you decide to create this project from scratch, you should
+create the project using the `ng new <project-name>` command, then
+execute these commands to install needed packages locally in
 the project:
 
-- `npm install falcor --save`
-- `npm install @types/falcor --save`
-- `npm install falcor-local-datasource --save`
+- `npm install @angular/material @angular/cdk @angular/animations hammerjs --save
+- `npm install falcor falcor-local-datasource @types/falcor --save`
 
 I, personally, dislike Angular's indentation scheme and much prefer
 using TAB characters for indentation. So, I "fix up" the following
@@ -156,32 +152,26 @@ following:
 
 ![basic CRUD](BasicCrud.png)
 
-Using Material Design Lite
---------------------------
+Using Material Design
+---------------------
 
-In order to utilize the Material Design Lite (MDL) components, you will
-need to link to the MDL CSS and JavaScript files. Since we're developing
-a Single Page Application, we can do that in one place - the file
-`src/index.html`. Add this code at the end of the `<head>` section of that file:
+In order to utilize the Material Design components, you will
+need to make the following changes to some of the source files:
 
-	<link rel="stylesheet"
-	      href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
-	<link rel="stylesheet"
-	      href="https://fonts.googleapis.com/icon?family=Material+Icons">
+1. In src/app/app.module.ts:
+	- add `import {BrowserAnimationsModule} from '@angular/platform-browser/animations';`
+	- add `import {MatButtonModule, MatTableModule} from '@angular/material';`
+	- add BrowserAnimationsModule, MatButtonModule and MatTableModule to the list of imports
+	- if you want to use any other 'Mat' modules, import them as above
 
-Next, add the following at the end of the `<body>` section of that file:
+2. In src/styles.css:
+	- add `@import "~@angular/material/prebuilt-themes/indigo-pink.css";`
 
-	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js">
-	</script>
+3. In src/main.ts:
+	- add `import 'hammerjs';`
 
-> NOTE: The code above references a specific version of MDL and a specific
->       color scheme. You can instead reference a different version, e.g.
->       a more recent version and also a different color scheme.
-
-> NOTE: It is possible to install material-design-lite directly into your
->       project using `npm install material-design-lite --save` but I could
->       not figure out how to correctly link to those CSS and JavaScript files
->       so I decided to use Google's CDN as they recommend.
+4. In src/index.html:
+	- add `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 After you make the above changes, your web site should look almost the same,
 except that the font used will now be a sans-serif font:
@@ -193,8 +183,9 @@ Displaying a list of users
 
 Before we even implement the data model, we'll display a hard coded list
 of users, which will illustrate the use of Material Design Lite and
-show what the interface will look like. But first, let's Next, we'll modify src/app/app.component.html to include a hard coded
-table to show the use of Material Design Lite:
+show what the interface will look like. To do that we will use the MDL
+data-table component. Modify the `src/app/app.component.html` file to:
+
 
 
 

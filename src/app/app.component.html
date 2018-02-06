@@ -1,5 +1,34 @@
-<div style="text-align:center">
-	<h1>
-		Welcome to Basic CRUD!
-	</h1>
+<div class="mat-elevation-z8">
+
+	<mat-table [dataSource]="getUsers()" class="limit-width">
+
+		<!-- First Name Column -->
+		<ng-container matColumnDef="firstName">
+			<mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+			<mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
+		</ng-container>
+
+		<!-- Last Name Column -->
+		<ng-container matColumnDef="lastName">
+			<mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+			<mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
+		</ng-container>
+
+		<!-- Gender Column -->
+		<ng-container matColumnDef="gender">
+			<mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+			<mat-cell *matCellDef="let user"> {{user.gender}} </mat-cell>
+		</ng-container>
+
+		<!-- Date of Birth Column -->
+		<ng-container matColumnDef="dateOfBirth">
+			<mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
+			<mat-cell *matCellDef="let user"> {{user.dateOfBirth}} </mat-cell>
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+		<mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+
+	</mat-table>
+
 </div>
