@@ -190,7 +190,7 @@ of users, which will illustrate the use of Material Design Lite and
 show what the interface will look like. To do that we will use the Material Design
 mat-table component. Modify the following files as shown:
 
-`src/app/app.component.css`
+File `src/app/app.component.css`
 
 	.limit-width {
 		max-width: 640px;
@@ -198,6 +198,90 @@ mat-table component. Modify the following files as shown:
 		margin-right: auto;
 		}
 
+File `src/app/app.component.ts`
+
+	import {Component, OnInit} from '@angular/core';
+
+	@Component({
+		selector: 'app-root',
+		templateUrl: './app.component.html',
+		styleUrls: ['./app.component.css']
+		})
+
+	export class AppComponent implements OnInit {
+
+	lUsers: any[] = [];
+	columnsToDisplay = ['firstName', 'lastName', 'gender', 'dateOfBirth'];
+
+	// --------------------------------------------------------------------------
+
+	ngOnInit() {
+
+	this.addUser('Dana',    'Cox',      'M',  'Jan  5, 1988');
+	this.addUser('John',    'Deighan',  'M',  'Feb 12, 1953');
+	this.addUser('Lewis',   'Foster',   'M',  'Aug  3, 1983');
+	this.addUser('Arathi',  'Prasad',   'F',  'Sep 23, 1973');
+	} // ngOnInit()
+
+	// --------------------------------------------------------------------------
+
+	addUser(fName, lName, gen, dob) {
+
+	this.lUsers.push({
+		firstName: fName,
+		lastName: lName,
+		gender: gen,
+		dateOfBirth: dob
+		});
+	} // addUser()
+
+	// --------------------------------------------------------------------------
+
+	getUsers() {
+
+	return this.lUsers;
+	} // getUsers()
+
+	// --------------------------------------------------------------------------
+
+	} // class AppComponent
+
+File `src/app/app.component.html`
+
+	<div class="mat-elevation-z8">
+
+		<mat-table [dataSource]="getUsers()" class="limit-width">
+
+			<!-- First Name Column -->
+			<ng-container matColumnDef="firstName">
+				<mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+				<mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
+			</ng-container>
+
+			<!-- Last Name Column -->
+			<ng-container matColumnDef="lastName">
+				<mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+				<mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
+			</ng-container>
+
+			<!-- Gender Column -->
+			<ng-container matColumnDef="gender">
+				<mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+				<mat-cell *matCellDef="let user"> {{user.gender}} </mat-cell>
+			</ng-container>
+
+			<!-- Date of Birth Column -->
+			<ng-container matColumnDef="dateOfBirth">
+				<mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
+				<mat-cell *matCellDef="let user"> {{user.dateOfBirth}} </mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+			<mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+
+		</mat-table>
+
+	</div>
 
 
 
